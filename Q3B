@@ -1,0 +1,16 @@
+3.	#!/bin/bash
+time=$(date+%I)
+c=0
+while [ "$c" -lt "$time" ]; do
+        sleep 1
+        let c=c+1
+done
+sleep 3
+minute=$(date +%M)
+if [[ $minute -gt 0 && $minute -le 19 ]]; then
+     echo "no chime expected"
+elif [[ $minute -gt 20 && $minute -le 39 ]]; then
+        echo -ne "\a"
+elif [[ $minute -gt 40 && $minute -lt 59 ]]; then
+        echo -ne "\a\a"
+fi
